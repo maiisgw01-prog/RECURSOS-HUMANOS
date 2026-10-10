@@ -1,4 +1,4 @@
-import { getStore } from "@netlify/blobs";
+import { connectLambda, getStore } from "@netlify/blobs";
 import {
   AuthError,
   authErrorResponse,
@@ -25,6 +25,8 @@ export const handler = async event => {
   if (!["GET", "PUT"].includes(event.httpMethod)) {
     return jsonResponse(405, { error: "Método no permitido." });
   }
+
+  connectLambda(event);
 
   let authorization;
   try {

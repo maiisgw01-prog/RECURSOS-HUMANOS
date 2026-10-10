@@ -568,11 +568,13 @@ async function start() {
       const access = new URLSearchParams(location.search).get("access");
       const message = access === "denied" || error.status === 403
         ? "Solo pueden entrar las personas del Discord indicado que tengan el rol autorizado."
-        : error.status === 401 || access === "login"
-          ? "Inicia sesión con Discord para comprobar que tienes acceso."
-          : access === "error"
-            ? "Discord no pudo completar el inicio de sesión. Inténtalo de nuevo."
-          : "No se pudo verificar el acceso. Revisa la configuración de Netlify e inténtalo de nuevo.";
+        : error.status >= 500
+          ? `Has iniciado sesión, pero el servidor no pudo cargar los datos (${error.message}).`
+          : error.status === 401 || access === "login"
+            ? "Inicia sesión con Discord para comprobar que tienes acceso."
+            : access === "error"
+              ? "Discord no pudo completar el inicio de sesión. Inténtalo de nuevo."
+              : "No se pudo verificar el acceso. Revisa la configuración de Netlify e inténtalo de nuevo.";
       showLogin(message);
       history.replaceState(null, "", location.pathname);
       if (error.status !== 401 && error.status !== 403) {

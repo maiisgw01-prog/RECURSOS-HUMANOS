@@ -58,7 +58,8 @@ const save = () => {
 const loadFromServer = async () => {
   const res = await fetch("/api/data", {cache:"no-store"});
   if (!res.ok) {
-    const error = new Error(`Error ${res.status} al cargar`);
+    const detail = await res.json().then(body => body.error, () => "");
+    const error = new Error(detail || `Error ${res.status} al cargar`);
     error.status = res.status;
     throw error;
   }

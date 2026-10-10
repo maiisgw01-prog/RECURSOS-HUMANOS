@@ -32,7 +32,6 @@ Las funciones de autenticación y guardado necesitan un despliegue de Netlify co
 ## Datos y límites
 
 - Netlify guarda los registros en un almacén persistente de Netlify Blobs; no dependen del navegador ni de `localStorage`.
-- Las lecturas usan consistencia fuerte para que una escritura reciente aparezca en las siguientes consultas.
 - La carpeta `datos/` contiene los datos de la versión local y no se publica. El almacén de Netlify comienza vacío y se inicializa con los datos de ejemplo de la app la primera vez que inicia sesión una persona autorizada.
 - Todos los miembros con ese rol comparten los mismos datos y pueden modificarlos. No hay permisos por usuario ni historial de cambios.
 - Este prototipo guarda el registro completo como un documento JSON. Si dos personas editan a la vez, una escritura puede reemplazar cambios recientes de la otra. Netlify Blobs no sustituye a una base de datos con transacciones, copias de seguridad y auditoría.

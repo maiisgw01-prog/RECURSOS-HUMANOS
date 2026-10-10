@@ -34,18 +34,18 @@ export const handler = async event => {
   } catch (error) {
     if (error instanceof AuthError) return authErrorResponse(error);
     console.error("No se pudo comprobar el acceso a los datos.", error);
-    return jsonResponse(500, { error: "No se pudo comprobar el acceso." });
+    return jsonResponse(500, { error: `No se pudo comprobar el acceso: ${error.message}` });
   }
 
   const cookies = authorization.cookie ? [authorization.cookie] : [];
   if (event.httpMethod === "GET") {
     try {
       const store = getStore(STORE_NAME);
-      const data = await store.get(DATA_KEY, { type: "json", consistency: "strong" });
+      const data = await store.get(DATA_KEY, { type: "json" });
       return jsonResponse(200, data ?? null, cookies);
     } catch (error) {
       console.error("No se pudieron leer los datos guardados en Netlify Blobs.", error);
-      return jsonResponse(500, { error: "No se pudieron leer los datos guardados." }, cookies);
+      return jsonResponse(500, { error: `No se pudieron leer los datos guardados: ${error.message}` }, cookies);
     }
   }
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos Humanos</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <section id="login-screen" class="login-screen" hidden>
+    <div class="login-card">
+      <img class="brand-mark" src="assets/logo-hospital.svg" alt="" aria-hidden="true">
+      <h1>Recursos Humanos</h1>
+      <p id="login-message">Inicia sesión con Discord para comprobar el acceso.</p>
+      <a class="primary login-button" href="/.netlify/functions/auth?action=login">Entrar con Discord</a>
+    </div>
+  </section>
+
+  <div id="application" hidden>
+    <aside class="sidebar">
+      <div class="logo"><img class="brand-mark" src="assets/logo-hospital.svg" alt="" aria-hidden="true"><span>Recursos Humanos</span></div>
+      <nav>
+        <button class="nav-btn active" data-section="plantilla">👥 Plantilla</button>
+        <button class="nav-btn" data-section="ausencias">📅 Ausencias</button>
+        <button class="nav-btn" data-section="incidencias">⚠️ Sanciones</button>
+        <button class="nav-btn" data-section="observaciones">📝 Observaciones</button>
+        <button class="nav-btn" data-section="placas">🔢 Placas</button>
+      </nav>
+      <div class="sidebar-footer">Versión 1.0 · Datos compartidos</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Plantilla</h1>
+          <p id="today"></p>
+        </div>
+        <button class="secondary" id="btn-cerrar-sesion" type="button" hidden>Cerrar sesión</button>
+      </header>
+
+      <section id="plantilla" class="section active">
+      <div class="section-head">
+        <div>
+          <h2>Plantilla</h2>
+          <p>Listado de trabajadores de la aplicación.</p>
+        </div>
+        <div class="template-actions">
+          <button class="secondary" id="btn-importar-fotos" type="button">Importar logos de rango</button>
+          <button class="primary" id="btn-nuevo-empleado"><span aria-hidden="true">＋</span> Nuevo trabajador</button>
+        </div>
+      </div>
+      <p class="photo-import-hint">Cada archivo se asigna al rango cuyo nombre coincide con el archivo.</p>
+      <input id="importar-fotos" type="file" accept="image/*" webkitdirectory multiple hidden>
+      <p id="resultado-importacion-fotos" class="import-result" aria-live="polite" hidden></p>
+      <input class="search" id="buscar-empleado" placeholder="Buscar por nombre, categoría o rango...">
+      <div class="employee-cards" id="employee-cards" aria-live="polite"></div>
+      </section>
+
+      <section id="ausencias" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Ausencias</h2>
+          <p>Registro compartido de ausencias.</p>
+        </div>
+        <button class="primary" id="btn-nueva-ausencia">+ Registrar ausencia</button>
+      </div>
+      <div class="panel table-wrap">
+        <table>
+          <thead><tr><th>Trabajador</th><th>Desde</th><th>Hasta</th><th>Tipo</th><th>Motivo</th><th>Estado</th></tr></thead>
+          <tbody id="tabla-ausencias"></tbody>
+        </table>
+      </div>
+      </section>
+
+      <section id="incidencias" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Sanciones</h2>
+          <p>Registro de avisos, faltas y suspensiones.</p>
+        </div>
+        <button class="primary" id="btn-nueva-incidencia">+ Nueva sanción</button>
+      </div>
+      <div class="sanction-toolbar">
+        <select class="plate-filter" id="filtrar-sanciones" aria-label="Filtrar sanciones">
+          <option value="activas">Sanciones activas</option>
+          <option value="archivadas">Archivadas</option>
+          <option value="todas">Todas</option>
+        </select>
+        <span class="plate-summary" id="resumen-sanciones"></span>
+      </div>
+      <div class="panel table-wrap">
+        <table>
+          <thead><tr><th>Trabajador</th><th>Fecha</th><th>Tipo</th><th>Motivo / descripción</th><th>Acción</th></tr></thead>
+          <tbody id="tabla-incidencias"></tbody>
+        </table>
+      </div>
+      </section>
+
+      <section id="observaciones" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Observaciones</h2>
+          <p>Notas de seguimiento que no conllevan sanción.</p>
+        </div>
+        <button class="primary" id="btn-nueva-observacion">+ Nueva nota</button>
+      </div>
+      <div class="panel table-wrap">
+        <table>
+          <thead><tr><th>Profesional</th><th>Fecha</th><th>Nota</th></tr></thead>
+          <tbody id="tabla-observaciones"></tbody>
+        </table>
+      </div>
+      </section>
+
+      <section id="placas" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Inventario de placas</h2>
+          <p>Consulta cada placa y marca si está libre o cogida.</p>
+        </div>
+      </div>
+      <div class="plate-toolbar">
+        <input class="search" id="buscar-placa" type="search" placeholder="Buscar placa o rango..." aria-label="Buscar placa o rango">
+        <select class="plate-filter" id="filtrar-placas" aria-label="Filtrar por estado">
+          <option value="todas">Todas las placas</option>
+          <option value="libres">Libres</option>
+          <option value="cogidas">Cogidas</option>
+        </select>
+        <span class="plate-summary" id="resumen-placas"></span>
+      </div>
+      <div class="panel table-wrap">
+        <table>
+          <thead><tr><th>Placa</th><th>Rango</th><th>Estado</th></tr></thead>
+          <tbody id="tabla-placas"></tbody>
+        </table>
+      </div>
+      </section>
+    </main>
+
+    <div class="modal hidden" id="modal">
+      <div class="modal-box">
+        <button class="close" id="close-modal">×</button>
+        <h2 id="modal-title">Nuevo registro</h2>
+        <form id="modal-form"></form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

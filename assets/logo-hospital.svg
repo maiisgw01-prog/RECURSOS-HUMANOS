@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-labelledby="title">
+  <title id="title">Logo de San Andreas Medical Services</title>
+  <defs>
+    <path id="top-arc" d="M 37 155 A 113 113 0 0 1 263 155" />
+  </defs>
+  <circle cx="150" cy="150" r="145" fill="#11110f" stroke="#d2ab00" stroke-width="5" />
+  <circle cx="150" cy="150" r="117" fill="none" stroke="#d2ab00" stroke-width="2" />
+  <circle cx="150" cy="150" r="108" fill="none" stroke="#d2ab00" stroke-width="1.5" />
+  <text fill="#fff" font-family="Montserrat, Arial, sans-serif" font-size="20" font-weight="800" letter-spacing="1.5">
+    <textPath href="#top-arc" startOffset="50%" text-anchor="middle">SAN ANDREAS MEDICAL SERVICES</textPath>
+  </text>
+  <g fill="#d2ab00" transform="translate(150 244)">
+    <path d="M-56 0l-9-7 9-7 9 7zm112 0l9-7-9-7-9 7z" />
+  </g>
+  <text x="150" y="260" fill="#fff" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="5" text-anchor="middle">SAMS</text>
+  <g fill="none" stroke="#d2ab00" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 91v127" stroke-width="7" />
+    <path d="M138 218h24M140 95h20" stroke-width="5" />
+    <path d="M150 103c-23-15-34-2-19 9 12 9 34 4 37 18 4 16-32 17-39 3-5-10 4-18 15-17 11 1 17 11 18 23 2 17-15 24-12 37 3 13 27 14 29 27 1 8-6 13-14 14" stroke-width="4" />
+    <path d="M149 119c-4-4-12-10-18-10M151 126c5-4 14-6 20-3" stroke-width="2" />
+    <path d="M150 98c-17-18-31-13-43-14-12-1-22-6-29-15 14 3 26 3 38 0 13-4 24-10 34-4 5 3 8 8 9 14M150 98c17-18 31-13 43-14 12-1 22-6 29-15-14 3-26 3-38 0-13-4-24-10-34-4-5 3-8 8-9 14" stroke-width="4" />
+    <path d="M138 83c-12-11-26-11-40-9m49 4c-14-7-27-5-41 0m54 5c12-11 26-11 40-9m-49 4c14-7 27-5 41 0" stroke-width="3" />
+    <path d="M145 104c-17 9-28 25-34 43-8 25-6 48 5 70m39-113c17 9 28 25 34 43 8 25 6 48-5 70M116 158c-16-9-25-23-30-41-3-12-4-22-2-32 10 13 17 25 19 38m81 35c16-9 25-23 30-41 3-12 4-22 2-32-10 13-17 25-19 38M112 190c-18-4-31-14-41-28-7-10-11-19-13-29 14 9 25 18 32 29m98 28c18-4 31-14 41-28 7-10 11-19 13-29-14 9-25 18-32 29M117 215c-18 0-33-6-47-18-9-8-16-16-21-26 17 5 31 11 41 20m120 24c18 0 33-6 47-18 9-8 16-16 21-26-17 5-31 11-41 20" stroke-width="3" />
+  </g>
+  <g fill="#d2ab00">
+    <path d="M144 89c-18-14-32-8-45-9 15 12 27 16 44 14zm12 0c18-14 32-8 45-9-15 12-27 16-44 14z" />
+    <circle cx="150" cy="75" r="11" />
+    <path d="M150 52l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" />
+    <path d="M67 237l3 6 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1zM233 237l3 6 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" />
+  </g>
+</svg>
